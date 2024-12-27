@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3kpB5qAyLTUuMAe3ZOjH5GA1hb7vIwUG5URHyEGBQJ8=",
+  "Source": "RealPOSApi",
+  "BasePath": "_content/RealPOSApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
