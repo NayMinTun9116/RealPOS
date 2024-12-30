@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RealPOSApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+661cd93b545893757d257dc40699635c21e05868")]
 [assembly: System.Reflection.AssemblyProductAttribute("RealPOSApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RealPOSApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS realpos
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE `realpos`.`tbcategory` (
+`category_id` INT NOT NULL,
+`category` VARCHAR(100) NOT NULL,
+`expired_day` INT,
+PRIMARY KEY (`category_id`)
+);
+
+CREATE USER 'realpos_user'@'%' IDENTIFIED BY '8Nov1989*';
+GRANT SELECT, INSERT, UPDATE, DELETE ON realpos.* TO 'realpos_user'@'%';
