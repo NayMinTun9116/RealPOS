@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RealPOSApi.Entities.Model;
+using RealPOSApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -13,7 +13,7 @@ builder.Services.AddDbContext<AppDb>(opt => opt.UseMySql(connectionString, Serve
 .LogTo(Console.WriteLine, LogLevel.Information)
 .EnableSensitiveDataLogging()
 .EnableDetailedErrors());
-
+builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
