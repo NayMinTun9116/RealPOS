@@ -1,7 +1,7 @@
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
-using RealPOSApi.Entities.Model;
+using RealPOSApi.Model;
 public class AppDb : DbContext
 {
 
@@ -11,7 +11,7 @@ public class AppDb : DbContext
         var appsettingbuilder = new
         ConfigurationBuilder().AddJsonFile("appsettings.json");
         var Configuration = appsettingbuilder.Build();
-        connectionString =  Configuration.GetConnectionString("DefaultConnection");
+        connectionString = Configuration.GetConnectionString("DefaultConnection");
     }
     public async Task<T?> GetAsync<T>(string command, object parms)
     {
@@ -47,11 +47,12 @@ public class AppDb : DbContext
     }
 
     // public DbSet<Category> Category { get; set; }
-    public DbSet<TodoItem> TodoItem { get; set; }
+    
+    public DbSet<Category> Category { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<TodoItem>()
-       .HasKey(c => c.Id);        
+    {        
+        modelBuilder.Entity<Category>()
+        .HasKey(c => c.category_id);
     }
 }
