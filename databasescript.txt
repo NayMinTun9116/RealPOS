@@ -6,9 +6,20 @@ CREATE TABLE `realpos`.`tbcategory` (
 `category_id` INT NOT NULL,
 `category` VARCHAR(100) NOT NULL,
 `expired_day` INT,
-`customer_id` INT,
+`customer_id` INT NOT NULL,
 PRIMARY KEY (`category_id`)
+);
+
+CREATE TABLE `realpos`.`tbcustomer` (
+`customer_id` INT NOT NULL,
+`name` VARCHAR(100) NOT NULL,
+`url` VARCHAR(100) NOT NULL,
+PRIMARY KEY (`customer_id`)
 );
 
 CREATE USER 'realpos_user'@'%' IDENTIFIED BY '8Nov1989*';
 GRANT SELECT, INSERT, UPDATE, DELETE ON realpos.* TO 'realpos_user'@'%';
+
+ALTER TABLE `realpos`.`tbcategory`
+ADD CONSTRAINT `customer_frk` FOREIGN KEY (`customer_id`) REFERENCES
+`realpos`.`tbcustomer`(`customer_id`) ON UPDATE NO ACTION ON DELETE CASCADE;

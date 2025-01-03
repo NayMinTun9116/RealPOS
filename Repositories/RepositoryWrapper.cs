@@ -12,6 +12,15 @@ namespace RealPOSApi.Repositories
                 return _category;
             }
         }
+        private ICustomerRepository? _customer;
+        public ICustomerRepository Customer
+        {
+            get
+            {
+                _customer ??= new CustomerRepository(_context);
+                return _customer;
+            }
+        }
         
     }
 }

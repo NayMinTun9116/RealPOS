@@ -14,9 +14,8 @@ namespace RealPOSApi.DTO
 
     public class CategoryRespondDTO
     {
-        public string  Message{ get; set; }
-        public string  Error{ get; set; }
+        public string?  Message{ get; set; }
+        public string?  Error{ get; set; }
         
     }
-
 }

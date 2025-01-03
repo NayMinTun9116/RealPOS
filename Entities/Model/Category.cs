@@ -12,6 +12,3 @@ public class Category : BaseModel
     public int customer_id { get; set; }
 
 }
-
-
-

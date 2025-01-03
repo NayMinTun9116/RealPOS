@@ -1,10 +1,8 @@
-
 using Microsoft.AspNetCore.Mvc;
 using RealPOSApi.Controllers;
 using RealPOSApi.DTO;
 using RealPOSApi.Model;
 using RealPOSApi.Repositories;
-
 
 [ApiController]
 [Route("api/[controller]")]
@@ -19,9 +17,9 @@ public class CategoryController : BaseController<CategoryController>
     [HttpGet("GetAllCategories", Name = "GetAllCategories")]
     public async Task<List<Category>> GetAllCategories()
     {
-        return await _repositoryWrapper.Category.GetAllCategories(0);
+        return await _repositoryWrapper.Category.GetAllCategories(1);
     }
-    // POST: api/AddCategory
+    // POST: api/SaveCategory
     [HttpPost("SaveCategory", Name = "SaveCategory")]
     public async Task<CategoryRespondDTO> AddCategory(CategoryDTO param)
     {
@@ -29,7 +27,7 @@ public class CategoryController : BaseController<CategoryController>
         {
             if (!await _repositoryWrapper.Category.CheckDuplicate(param.Category))
             {
-                int Maxid = await _repositoryWrapper.Category.MaxCategoryID(0);
+                int Maxid = await _repositoryWrapper.Category.MaxCategoryID(1);
                 Category newobj = new Category
                 {
                     category_id = Maxid,
@@ -46,7 +44,7 @@ public class CategoryController : BaseController<CategoryController>
         }
         catch (Exception ex)
         {
-            return new CategoryRespondDTO { Message = "Error in AddCategory", Error = "Error in AddCategory" };
+            return new CategoryRespondDTO { Message = "Error in SaveCategory", Error = "Error in SaveCategory" };
         }
     }
     // POST: api/UpdateCategory
@@ -55,7 +53,7 @@ public class CategoryController : BaseController<CategoryController>
     {
         try
         {
-            var OldCategory = await _repositoryWrapper.Category.OldCategory(param.CategoryID, 0);
+            var OldCategory = await _repositoryWrapper.Category.OldCategory(param.CategoryID, 1);
             if (OldCategory == null)
             {
                 return new CategoryRespondDTO { Message = "Category does not exist" };
@@ -79,7 +77,7 @@ public class CategoryController : BaseController<CategoryController>
     {
         try
         {
-            Category? OldCategory = await _repositoryWrapper.Category.OldCategory(categoryid, 0);
+            Category? OldCategory = await _repositoryWrapper.Category.OldCategory(categoryid, 1);
             if (OldCategory == null)
             {
                 return new CategoryRespondDTO { Message = "Category does not exist" };

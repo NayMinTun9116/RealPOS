@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using RealPOSApi.Model;
-using RealPOSApi.Repositories;
+
 namespace RealPOSApi.Repositories
 {
     public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
@@ -13,7 +12,7 @@ namespace RealPOSApi.Repositories
 
         public async Task<Category?> OldCategory(int category_id, int customer_id)
         {
-            return await RepositoryContext.Category.Where(u => u.category_id == category_id && u.customer_id == customer_id).FirstOrDefaultAsync() ?? null;
+            return await RepositoryContext.Category!.Where(u => u.category_id == category_id && u.customer_id == customer_id).FirstOrDefaultAsync() ?? null;
         }
         public async Task<bool> CheckDuplicate(string category)
         {
@@ -21,7 +20,7 @@ namespace RealPOSApi.Repositories
             {
                 if (!string.IsNullOrEmpty(category))
                 {
-                    return await RepositoryContext.Category.AnyAsync(u => u.category == category);
+                    return await RepositoryContext.Category!.AnyAsync(u => u.category == category);
                 }
                 else
                 {

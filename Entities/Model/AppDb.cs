@@ -5,7 +5,7 @@ using RealPOSApi.Model;
 public class AppDb : DbContext
 {
 
-    readonly string connectionString = "";
+    readonly string? connectionString = "";
     public AppDb(DbContextOptions<AppDb> options) : base(options)
     {
         var appsettingbuilder = new
@@ -48,11 +48,13 @@ public class AppDb : DbContext
 
     // public DbSet<Category> Category { get; set; }
     
-    public DbSet<Category> Category { get; set; }
-
+    public DbSet<Category>? Category { get; set; }
+    public DbSet<Customer>? Customer { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {        
         modelBuilder.Entity<Category>()
         .HasKey(c => c.category_id);
+        modelBuilder.Entity<Customer>()
+        .HasKey(c => c.customer_id);
     }
 }
